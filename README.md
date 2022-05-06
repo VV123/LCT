@@ -10,7 +10,7 @@
 
 ## Data
 
-[data file]()
+Store [data file]() in the root directory.
 
 ## How to run
 
