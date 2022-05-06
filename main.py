@@ -237,13 +237,7 @@ if __name__ == '__main__':
        
         Ybar = np.asarray(Ybar)
         Ylabel = np.asarray(Ylabel)
-        print('[No filter]')
-        print('Test set: MAPE: {0:.4f}. RMSE: {1:.4f}. MAE: {2:.4f}.'.format(mean_absolute_percentage_error(Ylabel, Ybar), mean_squared_error(Ylabel, Ybar, squared=False), mean_absolute_error(Ybar, Ylabel)))
         Ybar = Ybar[Ylabel>5]
         Ylabel = Ylabel[Ylabel>5]
-        print('[Filter > 5]')
         print('Test set: MAPE: {0:.4f}. RMSE: {1:.4f}. MAE: {2:.4f}.'.format(mean_absolute_percentage_error(Ylabel, Ybar), mean_squared_error(Ylabel, Ybar, squared=False), mean_absolute_error(Ybar, Ylabel)))
-        Ybar = Ybar[Ylabel>10]
-        Ylabel = Ylabel[Ylabel>10]
-        print('[Filer > 10]')
-        print('Test set: MAPE: {0:.4f}. RMSE: {1:.4f}. MAE: {2:.4f}.'.format(mean_absolute_percentage_error(Ylabel, Ybar), mean_squared_error(Ylabel, Ybar, squared=False), mean_absolute_error(Ybar, Ylabel)))
+       
