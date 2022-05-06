@@ -10,7 +10,7 @@
 
 ## Data
 
-[Data file]()
+[data file]()
 
 ## How to run
 
