@@ -6,6 +6,7 @@
 - PyTorch (>= 1.0)
 - numpy
 - shapely
+- pytorch_forecasting
 
 ## Data
 
@@ -18,7 +19,7 @@
 python3 main.py --epoch 1000  \
         --lookback 24 --path model.h5 \
         --layer 3 --size 3 \
-        --loaddata —mode train
+        --loaddata —mode infer
 ```
 
 - ```size```: K-hop neighbors
