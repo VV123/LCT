@@ -19,7 +19,7 @@ Store [data file]() in the root directory.
 python3 main.py --epoch 1000  \
         --lookback 24 --path model.h5 \
         --layer 3 --size 3 \
-        --loaddata —mode infer
+        --loaddata —-mode infer
 ```
 
 - ```size```: K-hop neighbors
