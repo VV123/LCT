@@ -33,7 +33,6 @@ if __name__ == '__main__':
     arg_parser.add_argument('--path', default='model0.h5', type=str)
     arg_parser.add_argument('--layer', default=3, type=int)
     arg_parser.add_argument('--size', default=3, type=int)
-    #arg_parser.add_argument('--loaddata', default=False, type=bool)
     arg_parser.add_argument("--loaddata", default=False, action="store_true")
     args = arg_parser.parse_args()
 
@@ -132,7 +131,7 @@ if __name__ == '__main__':
                 optimizer.step()
                 total_loss += loss.item()
             
-            if epoch%10 == 0 or epoch == args.epoch - 1:
+            if epoch%10 == 0:
                 Ybar, Ylabel = [], []
                 for i in range(num_batch_test):
                     st = i * args.batch_size
