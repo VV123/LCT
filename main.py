@@ -59,25 +59,20 @@ if __name__ == '__main__':
     nid_train = nid_train.to(device)
     nid_test = nid_test.to(device)
 
-    print(X_train.shape) # 5205 * 278
+    print(X_train.shape) 
     print(X1_train.shape)
-    print(y_train.shape) # 5205 
-    print(X_test.shape) #  2231 * 278
+    print(y_train.shape) 
+    print(X_test.shape) 
     print(X1_test.shape)
-    print(y_test.shape) # 2231
+    print(y_test.shape) 
     print(xdow_train.shape)
     print(xdow_test.shape)
 
     model_path = args.path
-    #model_path = 'model_conv3_nta.h5'
     model = STModel(lookback=lookback, num_layers=args.layer, size=args.size)
-    #model = torch.load(model_path)
     model.to(device)
     
     loss_function = nn.MSELoss()
-    #loss_function = MAPELoss  #y_true has zero can not divide
-    #loss_function = nn.L1Loss()
-
     optimizer = optim.Adam(model.parameters(), lr = 0.001)
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=100, gamma=0.1)
 
@@ -85,7 +80,7 @@ if __name__ == '__main__':
     num_batch_test = int((len(y_test) + args.batch_size)/args.batch_size)
 
     last_acc = 100.0
-    last_loss = 100.0
+    last_loss = 1000000.0
     if args.mode == 'train':
         for epoch in range(args.epoch):
             model.to(device)
@@ -180,22 +175,13 @@ if __name__ == '__main__':
                 print('\nEpoch: ', epoch)
                 print('\nTraining set: Loss {0:.4f} RMSE {1:.4f}.\nTest: RMSE {2:.4f} MAE {3:.4f} MAPE {4:.4f}.'.format(total_loss,  mean_squared_error(Ybar0, Ylabel0, squared=False),  mean_squared_error(Ybar, Ylabel, squared=False), mean_absolute_error(Ybar, Ylabel), mean_absolute_percentage_error(Ylabel, Ybar)))
                 print(_pred.flatten()[:10])
-                if total_loss < last_loss:
-                    torch.save(model.state_dict(), model_path)
-                    #torch.save(model.cpu(), model_path)
-                    last_loss = total_loss
-                    print('Model saved!')
+                
             scheduler.step()
 
-        print(Ylabel[:10])
-        print(Ybar[:10])
-    
     elif args.mode == 'infer':
         model = STModel(lookback=lookback, num_layers=args.layer, size=args.size)
-        #model_path = 'h5file1/model_conv3_nta_new.h5'
         model_path = args.path
         model.load_state_dict(torch.load(model_path), strict=False)
-        #model = torch.load(model_path)
         model.to(device)
         Ybar, Ylabel = [], []
         for i in range(num_batch_test):
