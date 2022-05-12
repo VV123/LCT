@@ -47,7 +47,6 @@ class PositionalEncoding(nn.Module):
         div_term = torch.exp(torch.arange(0, d_model, 2).float() * (-math.log(10000.0) / d_model))
         pe[:, 0::2] = torch.sin(position * div_term)
         pe[:, 1::2] = torch.cos(position * div_term)
-        #pe = pe.unsqueeze(0).transpose(0, 1) #B, d_model, seq_len
         pe.requires_grad = True
         self.register_buffer('pe', pe)
 
@@ -184,7 +183,6 @@ class Encoder(nn.Module):
 
         return x1, a  
 
-####################################################################################
 class STModel(nn.Module):
     def __init__(self, feature_size=100, num_layers=3, emb_dim=20, lookback=24, size=3):
         super(STModel, self).__init__()
@@ -202,7 +200,6 @@ class STModel(nn.Module):
         self.layer6 = nn.Linear(100, 1)
 
         self.feature_size= feature_size
-
         self.emb_dow = nn.Embedding(7, emb_dim) #7 days a week
         self.emb_loc = nn.Embedding(gridI*gridJ, emb_dim) 
         self.emb_time = nn.Embedding(13, emb_dim)
@@ -212,7 +209,6 @@ class STModel(nn.Module):
     def forward(self, src, src1, xdow, gid, tid, nid):
 
         device = 'cuda'
-
         #Embedding
         dow_emb = self.emb_dow(xdow)
         loc_emb = self.emb_loc(gid)
@@ -224,7 +220,6 @@ class STModel(nn.Module):
             mask = self._generate_square_subsequent_mask(src.size()[1]).to(device)
             self.src_mask = mask
  
-
         src, src1 = self.pos_encoder(src, src1) 
         trans_output, last_a = self.transformer_encoder(src, src1, self.src_mask)
         output = torch.mean(trans_output, dim=1).squeeze()
