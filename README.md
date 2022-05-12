@@ -24,3 +24,6 @@ python3 main.py --epoch 1000  \
 
 - ```size```: K-hop neighbors
 - ```layer```: # of Transformer encoder layers
+
+
+The full implementation and documents will be disclosed later.
