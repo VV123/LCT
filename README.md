@@ -10,6 +10,7 @@
 
 ## Data
 
+[Raw data](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 Store [data file]() in the root directory.
 
 ## How to run
