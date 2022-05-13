@@ -10,7 +10,7 @@
 
 ## Data
 
-Store [data file](https://drive.google.com/drive/folders/110UJnpo1ZVNkrOM7wuQ90ahVJZatZECF?usp=sharing) in the root directory.
+Store [data file]() in the root directory.
 
 ## How to run
 
