@@ -10,7 +10,7 @@
 
 ## Data
 
-[Raw data](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
+[Raw data](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page) (working with Parquet Format [Link](https://www1.nyc.gov/assets/tlc/downloads/pdf/working_parquet_format.pdf))
 
 Store [data file]() in the root directory.
 
