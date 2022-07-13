@@ -304,17 +304,6 @@ def plot(matrix):
 
 if __name__ == '__main__':
     
-    #_, _, NTA_grid = get_features()
-    #print(NTA_grid)
-    #print(res.shape)
-    #print(np.repeat(np.arange(len(res)),10).reshape(len(res),10)[res!=res])
-    #print(res[45,:])
-    #print(res[46,:])
-    pass
-    #load_adjmatrix(load=False)
     matrix = np.load('matrix.npz')['matrix']
-    #plot(matrix)
-    get_data(matrix, lookback=24, size=3, LOAD=False)
-    #mat = load_adjmatrix(load=True)
-    #print(mat)
-    #print(mat.shape)
+    get_data(matrix, lookback=24, size=3, LOAD=False) # "LOAD = False" will generate data; "LOAD = True" will load from npy file
+
