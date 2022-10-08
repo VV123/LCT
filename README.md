@@ -1,5 +1,4 @@
-# Modeling Spatio-Temporal Dynamics using Local Contextual Transformer
-
+# LCT
 ## Requirements
 
 - Python 3
